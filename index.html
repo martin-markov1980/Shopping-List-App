@@ -14,22 +14,76 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="container">
+    <header class="mb-5 sticky-top">
+        <div class="container shadow-lg rounded">
             <div class="d-flex flex-wrap">
-                <div class="p-3 d-flex m-auto align-items-center text-center h3 fw-bold">Tasks Tracker App</div>
+                <div class="p-3 d-flex m-auto align-items-center text-center h3 fw-bold">Shopping List App</div>
                 <form class="d-flex p-3 flex-grow-1">
-                    <input class="form-control me-2" type="search" placeholder="Search task...">
+                    <input class="form-control me-2" type="search" placeholder="Search item...">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 <div class="d-flex p-3 m-auto">
-                    <button type="button" class="btn btn-success btn-lg me-3">Add Task</button>
-                    <button type="button" class="btn btn-danger btn-lg">Delete All Tasks</button>
+                    <button type="button" id="add-task" class="btn btn-success btn-lg me-3" data-bs-toggle="modal" data-bs-target="#add-item-modal">Add Item</button>
+                    <button type="button" id="delete-all-items" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#delete-all-items-modal">Delete All Items</button>
                 </div>
             </div>
         </div>
     </header>
-    
+    <!-- Main section -->
+    <main>
+        <div class="container">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Here loading dynamically the tasks via JavaScript -->
+                </tbody>
+              </table>
+        </div>
+    </main>
+    <!-- Add Item Modal (pop up) -->
+    <div class="modal fade" id="add-item-modal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="">Enter Item Name and Quantity</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <label for="task-name">Item Name</label>
+              <input type="text" id="task-name" class="form-control">
+              <span id="item-name-checker" class="d-block mb-3 text-danger"></span>
+              <label for="task-quantity">Quantity</label>
+              <input type="text" id="task-quantity" class="form-control">
+              <span id="task-quantity-checker" class="text-danger"></span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="add-task-btn-modal" class="btn btn-success" data-bs-dismiss="modal">Add Item</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- Delete All Tasks Modal (pop up) -->
+    <div class="modal fade" id="delete-all-items-modal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Do you really want to delete all the tasks ?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="delete-all-yes-modal" class="btn btn-success" data-bs-dismiss="modal">Yes</button>
+                    <button type="button" id="delete-all-no-modal" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                </div>
+          </div>
+        </div>
+    </div>
+      
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>

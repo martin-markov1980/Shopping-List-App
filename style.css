@@ -2,3 +2,8 @@ body {
     font-family: 'Roboto Mono', monospace !important;
 }
 
+header {
+    background: inherit;
+}
+
+
