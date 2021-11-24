@@ -11,6 +11,14 @@ let itemNameChecker = document.getElementById('item-name-checker');
 let taskQuantityChecker = document.getElementById('task-quantity-checker');
 let deleteAllTasksBtn = document.getElementById('delete-all-yes-modal');
 
+// Testing how to remove single item from Local Storage
+tableBody.addEventListener('click', (e) => {
+    let targetBTN = e.target;
+    let removeKey = targetBTN.parentNode.previousSibling.previousSibling.innerHTML
+    localStorage.removeItem(removeKey);
+    console.log(removeKey);
+})
+
 // Add Task Event
 addTaskBtnModal.addEventListener('click', addTask);
 
