@@ -10,6 +10,7 @@ let quantityValue;
 let itemNameChecker = document.getElementById('item-name-checker');
 let taskQuantityChecker = document.getElementById('task-quantity-checker');
 let deleteAllTasksBtn = document.getElementById('delete-all-yes-modal');
+let deleteSingleYesModal = document.getElementById('delete-single-yes-modal');
 
 // Add Task Event
 addTaskBtnModal.addEventListener('click', addTask);
@@ -84,6 +85,11 @@ function addTask() {
         let btn = document.createElement('button');
         btn.className ='btn btn-danger btn-lg';
         btn.innerHTML = 'X'
+
+        btn.setAttribute('id', 'delete-single-item');
+        btn.setAttribute('data-bs-toggle', 'modal');
+        btn.setAttribute('data-bs-target', '#delete-single-item-modal');
+
         tdItem.innerHTML = itemName;
         let tdQuantity = document.createElement('td');
         tdQuantity.innerHTML = itemQuantity;
@@ -100,50 +106,55 @@ function addTask() {
 }
 
 // Testing how to remove single item from Local Storage
-tableBody.addEventListener('click', (e) => {
-    let targetBTN = e.target;
-    if (targetBTN.innerHTML === 'X') {
-        // targetBTN.setAttribute('id', 'delete-single-item')
-        // targetBTN.setAttribute('data-bs-toggle', 'modal');
-        // targetBTN.setAttribute('data-bs-target', '#delete-single-item-modal')
-        // let deleteSingleItemBtn = document.getElementById('delete-single-item')
 
-        console.log(targetBTN);
-        // return
+deleteSingleYesModal.addEventListener('click', yes);
+let targetBTN;
+tableBody.addEventListener('click', deleteSingleItem);
+
+function deleteSingleItem(e) {
+    targetBTN = e.target;
+}
+
+function yes() {
+    if (targetBTN.innerHTML === 'X') {
+        // call function that trigers 
+
         let keyToDelete = targetBTN.parentNode.previousSibling.previousSibling.innerHTML
         localStorage.removeItem(keyToDelete);
         tableBody.innerHTML = '';
         for (let index = 0; index < localStorage.length; index++) {
-                let itemName = localStorage.key(index);
-                let itemQuantity = localStorage.getItem(itemName);
+            let itemName = localStorage.key(index);
+            let itemQuantity = localStorage.getItem(itemName);
 
-                let tr = document.createElement('tr');
-                let tdItem = document.createElement('td');
-                let btn = document.createElement('button');
-                btn.className ='btn btn-danger btn-lg';
-                btn.innerHTML = 'X'
-                tdItem.innerHTML = itemName;
-                let tdQuantity = document.createElement('td');
-                tdQuantity.innerHTML = itemQuantity;
-                let tdButton = document.createElement('td');
-                tdButton.appendChild(btn);
+            let tr = document.createElement('tr');
+            let tdItem = document.createElement('td');
+            let btn = document.createElement('button');
+            btn.className ='btn btn-danger btn-lg';
+            btn.innerHTML = 'X'
 
-                tr.appendChild(tdItem);
-                tr.appendChild(tdQuantity);
-                tr.appendChild(tdButton);
+            btn.setAttribute('id', 'delete-single-item');
+            btn.setAttribute('data-bs-toggle', 'modal');
+            btn.setAttribute('data-bs-target', '#delete-single-item-modal');
 
-                tableBody.appendChild(tr);
-            
+            tdItem.innerHTML = itemName;
+            let tdQuantity = document.createElement('td');
+            tdQuantity.innerHTML = itemQuantity;
+            let tdButton = document.createElement('td');
+            tdButton.appendChild(btn);
+
+            tr.appendChild(tdItem);
+            tr.appendChild(tdQuantity);
+            tr.appendChild(tdButton);
+
+            tableBody.appendChild(tr);
+                
         }
-    }
-})
+   }
+}
+
 
 // Delete All Tasks
 function deleteAllTasks() {
     localStorage.clear();
     tableBody.innerHTML = '';
 }
-
-fetch('http swapi.dev/api/planets/1/')
-.then(res => res.json)
-.then
