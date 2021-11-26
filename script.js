@@ -8,6 +8,7 @@ let quantity = document.getElementById('task-quantity');
 let deleteAllTasksBtn = document.getElementById('delete-all-yes-modal');
 let deleteSingleYesModal = document.getElementById('delete-single-yes-modal');
 let search = document.getElementById('search');
+let searchBtn = document.getElementById('search-btn');
 // On the initial browser load or browser refresh, get the tasks from the localStorage, build and display them.
 tableBody.innerHTML = '';
 buildBodyTable();
@@ -75,10 +76,25 @@ function deleteAllTasks() {
     tableBody.innerHTML = '';
 }
 
-// Search Item functionality.
+// Search Item functionality for both on typing and using the serach button
 search.addEventListener('keyup', searchItem);
 
 function searchItem(e) {
+    let itemNames = document.querySelectorAll('tbody tr');
+    let searchedString = search.value;
+    for (let name of itemNames) {
+        if (name.firstElementChild.innerText.indexOf(searchedString) === -1) {
+            name.style.display = 'none';
+        } else {
+            name.style.display = 'table-row';
+        }
+    }
+}
+
+searchBtn.addEventListener('click', searchItemOnClick);
+
+function searchItemOnClick(e) {
+    e.preventDefault();
     let itemNames = document.querySelectorAll('tbody tr');
     let searchedString = search.value;
     for (let name of itemNames) {
