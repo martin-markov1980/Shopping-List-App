@@ -30,7 +30,7 @@ header .container {
     background: transparent;
     color: black;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 5%;
+    left: 5%;
     display: none;
   }
