@@ -1,31 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css"
+        integrity="sha384-7ynz3n3tAGNUYFZD3cWe5PDcE36xj85vyFkawcF6tIwxvIecqKvfwLiaFdizhPpN" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>Shopping List</title>
-    <link rel="icon" type="image/x-icon" href="shopping-trolley.png">
+    <link rel="icon" type="image/x-icon" href="shopping-trolley.png" />
 </head>
+
 <body>
     <!-- Header -->
     <header class="mb-5 sticky-top">
         <div class="container shadow-lg rounded">
             <div class="d-flex flex-wrap">
-                <div class="p-3 d-flex m-auto align-items-center text-center h3 fw-bold">Shopping List App</div>
+                <div class="p-3 d-flex m-auto align-items-center text-center h3 fw-bold">
+                    Shopping List App
+                </div>
                 <form class="d-flex p-3 flex-grow-1">
-                    <input id="search" class="form-control me-2" type="search" placeholder="Search item...">
-                    <button id="search-btn" class="btn btn-outline-success" type="submit">Search</button>
+                    <input id="search" class="form-control me-2 shadow-lg" type="search" placeholder="Search item..." />
+                    <button id="search-btn" class="btn btn-outline-success shadow-lg" type="submit">
+                        Search
+                    </button>
                 </form>
                 <div class="d-flex p-3 m-auto">
-                    <button type="button" id="add-task" class="btn btn-success btn-lg me-3" data-bs-toggle="modal" data-bs-target="#add-item-modal">Add Item</button>
-                    <button type="button" id="delete-all-items" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#delete-all-items-modal">Delete All Items</button>
+                    <button type="button" id="add-task" class="btn btn-success btn-lg me-3 shadow-lg"
+                        data-bs-toggle="modal" data-bs-target="#add-item-modal">
+                        Add Item
+                    </button>
+                    <button type="button" id="delete-all-items" class="btn btn-danger btn-lg shadow-lg"
+                        data-bs-toggle="modal" data-bs-target="#delete-all-items-modal">
+                        Delete All Items
+                    </button>
                 </div>
             </div>
         </div>
@@ -35,16 +52,19 @@
         <div class="container">
             <table class="table">
                 <thead>
-                  <tr>
-                    <th scope="col">Item</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Delete</th>
-                  </tr>
+                    <tr>
+                        <th scope="col">Item</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Delete</th>
+                    </tr>
                 </thead>
                 <tbody>
-                  <!-- Here loading dynamically the tasks via JavaScript -->
+                    <!-- Here loading dynamically the tasks via JavaScript -->
                 </tbody>
-              </table>
+            </table>
+            <!-- <button type="button" class="btn btn-dark btn-floating btn-sm" id="btn-back-to-top">
+                <i class="bi bi-arrow-up"></i>
+            </button> -->
         </div>
     </main>
     <!-- Add Item Modal (pop up) -->
@@ -57,14 +77,16 @@
                 </div>
                 <div class="modal-body">
                     <label for="task-name">Item Name</label>
-                    <input type="text" id="task-name" class="form-control">
+                    <input type="text" id="task-name" class="form-control" />
                     <span id="item-name-checker" class="d-block mb-3 text-danger"></span>
                     <label for="task-quantity">Quantity</label>
-                    <input type="text" id="task-quantity" class="form-control">
+                    <input type="text" id="task-quantity" class="form-control" />
                     <span id="task-quantity-checker" class="text-danger"></span>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="add-task-btn-modal" class="btn btn-success" data-bs-dismiss="modal">Add Item</button>
+                    <button type="button" id="add-task-btn-modal" class="btn btn-success" data-bs-dismiss="modal">
+                        Add Item
+                    </button>
                 </div>
             </div>
         </div>
@@ -72,35 +94,50 @@
     <!-- Delete All Items Modal (pop up) -->
     <div class="modal fade" id="delete-all-items-modal" tabindex="-1">
         <div class="modal-dialog">
-          <div class="modal-content">
+            <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Do you really want to delete all the items ?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Do you really want to delete all the items ?
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="delete-all-yes-modal" class="btn btn-success" data-bs-dismiss="modal">Yes</button>
-                    <button type="button" id="delete-all-no-modal" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                    <button type="button" id="delete-all-yes-modal" class="btn btn-success" data-bs-dismiss="modal">
+                        Yes
+                    </button>
+                    <button type="button" id="delete-all-no-modal" class="btn btn-danger" data-bs-dismiss="modal">
+                        No
+                    </button>
                 </div>
-          </div>
+            </div>
         </div>
     </div>
     <!-- Delete Single Item Modal (pop up) -->
     <div class="modal fade" id="delete-single-item-modal" tabindex="-1">
         <div class="modal-dialog">
-          <div class="modal-content">
+            <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Do you really want to delete this item ?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Do you really want to delete this item ?
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="delete-single-yes-modal" class="btn btn-success" data-bs-dismiss="modal">Yes</button>
-                    <button type="button" id="delete-all-no-modal" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                    <button type="button" id="delete-single-yes-modal" class="btn btn-success" data-bs-dismiss="modal">
+                        Yes
+                    </button>
+                    <button type="button" id="delete-all-no-modal" class="btn btn-danger" data-bs-dismiss="modal">
+                        No
+                    </button>
                 </div>
-          </div>
+            </div>
         </div>
     </div>
-      
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
     <script src="script.js" type="module"></script>
 </body>
+
 </html>
