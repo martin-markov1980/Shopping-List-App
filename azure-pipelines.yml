@@ -13,23 +13,27 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-# Step 1: Install Node.js (Required for Playwright)
+# Step 1: Checkout the code from GitHub
+- task: Checkout@2
+  displayName: 'Checkout code from GitHub'
+
+# Step 2: Install Node.js (Required for Playwright)
 - task: UseNode@1
   inputs:
-    versionSpec: '16.x'   # Adjust the Node.js version if needed
+    versionSpec: '16.x'  # Specify the version of Node.js. Adjust as needed.
   displayName: 'Install Node.js'
 
-# Step 2: Install dependencies
+# Step 3: Install npm dependencies
 - script: |
     npm install
-  displayName: 'Install npm dependencies'  
+  displayName: 'Install npm dependencies'
 
-# Step 3: Install Playwright dependencies
+# Step 4: Install Playwright dependencies (For Linux environments)
 - script: |
     npx playwright install-deps
   displayName: 'Install Playwright dependencies'
 
-# Step 4: Run Playwright tests
+# Step 5: Run Playwright tests
 - script: |
-    npx playwright test
-  displayName: 'npx playwright test --headed'
+    npx playwright test --headed
+  displayName: 'Run Playwright tests'
