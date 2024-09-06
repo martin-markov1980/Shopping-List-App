@@ -29,7 +29,8 @@ steps:
   displayName: 'Install xvfb'  
 - script: npx playwright install --with-deps
   displayName: 'Install Playwright browsers'
-- script: npx playwright test --headed
-  displayName: 'Run Playwright tests'
+- script: |
+    xvfb-run -a npx playwright test --headed
+  displayName: 'Run Playwright Tests with xvfb'
   env:
     CI: 'true'
