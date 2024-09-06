@@ -13,7 +13,6 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-steps:
 # Step 1: Checkout the code from GitHub
 - checkout: self
   displayName: 'Checkout code from GitHub'
