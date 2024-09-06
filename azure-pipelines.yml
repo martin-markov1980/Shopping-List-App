@@ -14,7 +14,7 @@ steps:
   displayName: 'Run a one-line script'
 
 # Step 1: Checkout the code from GitHub
-- task: Checkout@2
+- checkout: self
   displayName: 'Checkout code from GitHub'
 
 # Step 2: Install Node.js (Required for Playwright)
