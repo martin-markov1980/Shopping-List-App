@@ -34,7 +34,12 @@ steps:
     sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libx11-xcb1 libdrm2 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libasound2 libpangocairo-1.0-0 libxshmfence1 libxss1 libgtk-3-0 libx11-xcb-dev
   displayName: 'Install system dependencies for Playwright'
 
- # Step 5: Run Playwright tests
+# Step 5: Install npm dependencies including Playwright
+- script: |
+    npm install playwright
+  displayName: 'Install Playwright and npm dependencies'
+
+ # Step 6: Run Playwright tests
 - script: |
     /bin/bash -c "npx playwright test --headed"
   displayName: 'Run Playwright tests' 
