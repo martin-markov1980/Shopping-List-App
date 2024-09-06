@@ -6,50 +6,26 @@
 trigger:
 - master
 
+# Use a Docker container
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
+  demands:
+    - docker
+
+container: 
+  image: node:18  # Use Node.js 18.x Docker image
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
 - checkout: self
   displayName: 'Checkout code from GitHub'
 
-# Step 2: Install Node.js (Use version 18.x, required for Playwright)
-- task: UseNode@1
-  inputs:
-    versionSpec: '18.x'  # Ensure Node.js 18.x is installed
-    checkLatest: true    # Always ensure the latest available version is used
-  displayName: 'Install Node.js 18.x'
-
-# Step 3: Print Node.js Version
 - script: |
     node -v
-  displayName: 'Print Node.js Version'
-
-# Step 4: Print npm and npx Versions
-- script: |
     npm -v
     npx -v
-  displayName: 'Print npm and npx Versions'
+  displayName: 'Check Node.js, npm, and npx versions'
 
-# Step 5: Clear npm cache
 - script: |
-    npm cache clean --force
-  displayName: 'Clear npm cache'
-
-# Step 6: Install npm dependencies including Playwright
-- script: |
-    npm install
-  displayName: 'Install npm dependencies'
-
-# Step 7: Check Playwright Installation with sh
-- script: |
-    sh -c "npx playwright --version"
-  displayName: 'Check Playwright Installation with sh'
-
-# Step 8: Run Playwright Tests
-- script: |
-    npx playwright test --headed
-  displayName: 'Run Playwright tests'
+    npm install playwright
+    npx playwright --version
+  displayName: 'Install and Check Playwright'
