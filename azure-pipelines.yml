@@ -22,6 +22,11 @@ steps:
   displayName: 'Install Node.js'
 - script: npm ci
   displayName: 'npm ci'
+# Step 4: Install xvfb
+- script: |
+    sudo apt-get update
+    sudo apt-get install -y xvfb
+  displayName: 'Install xvfb'  
 - script: npx playwright install --with-deps
   displayName: 'Install Playwright browsers'
 - script: npx playwright test --headed
