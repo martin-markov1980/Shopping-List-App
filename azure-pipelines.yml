@@ -24,31 +24,29 @@ steps:
     checkLatest: true    # Always ensure the latest available version is used
   displayName: 'Install Node.js 18.x'
 
-# Step 3: Clear npm cache and verify Node.js version
+# Step 3: Verify Node.js and npm Versions
 - script: |
-    npm cache clean --force
+    echo "Node.js and npm versions"
     node -v
     npm -v
-  displayName: 'Clear npm cache and check Node.js version'
+  displayName: 'Check Node.js and npm versions'
 
-# Step 4: Install npm dependencies including Playwright
+# Step 4: Clear npm cache
+- script: |
+    npm cache clean --force
+  displayName: 'Clear npm cache'
+
+# Step 5: Install npm dependencies including Playwright
 - script: |
     npm install
-  displayName: 'Install Playwright and npm dependencies'
-
-# Step 5: Run Basic Commands to Check Environment
-- script: |
-    echo "Basic test command"
-    ls -l
-  displayName: 'Run Basic Commands'
+  displayName: 'Install npm dependencies'
 
 # Step 6: Verify Playwright Installation
 - script: |
-    npm install playwright
     npx playwright --version
-  displayName: 'Install and Check Playwright'
+  displayName: 'Check Playwright installation'
 
-# Step 7: Run Playwright Tests with sh (if necessary)
+# Step 7: Run Playwright Tests
 - script: |
-    sh -c "npx playwright test --headed"
-  displayName: 'Run Playwright Tests with sh'
+    npx playwright test --headed
+  displayName: 'Run Playwright tests'
