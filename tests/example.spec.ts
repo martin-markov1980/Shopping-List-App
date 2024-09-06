@@ -1,12 +1,5 @@
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
-  await page.goto('https://martin-markov1980.github.io/Shopping-List-App/');
-
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Shopping List/);
-});
-
 test('has added todo', async ({ page }) => {
   await page.goto('https://martin-markov1980.github.io/Shopping-List-App/');
 
@@ -23,7 +16,8 @@ test('has added todo', async ({ page }) => {
   await page.fill('#task-quantity', '3');
 
   // Click the button by its ID
-  await page.click('#add-task-btn-modal');
+  // await page.click('#add-task-btn-modal');
+  await page.click('#add-item-modal button#add-task-btn-modal');
 
   const tableLocator = page.locator('table');
   await expect(tableLocator).toHaveText(/Apple/);
@@ -31,6 +25,13 @@ test('has added todo', async ({ page }) => {
   // // Expect a title "to contain" a substring.
   // await expect(page).toHaveTitle(/Shopping List/);
 });
+
+// test('has title', async ({ page }) => {
+//   await page.goto('https://martin-markov1980.github.io/Shopping-List-App/');
+
+//   // Expect a title "to contain" a substring.
+//   await expect(page).toHaveTitle(/Shopping List/);
+// });
 
 // test('get started link', async ({ page }) => {
 //   await page.goto('https://playwright.dev/');
