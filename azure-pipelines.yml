@@ -30,8 +30,9 @@ steps:
 
 # Step 4: Install Playwright dependencies (For Linux environments)
 - script: |
+    npm install playwright
     npx playwright install-deps
-  displayName: 'Install Playwright dependencies'
+  displayName: 'Install Playwright and its dependencies'
 
 # Step 5: Run Playwright tests
 - script: |
