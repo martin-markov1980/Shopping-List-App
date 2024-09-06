@@ -36,7 +36,7 @@ steps:
     npm install
   displayName: 'Install Playwright and npm dependencies'
 
-# Step 5: Run Playwright tests (Headed mode)
+# Step 5: Run Playwright tests (without wrapping in Bash)
 - script: |
-    /bin/bash -c "npx playwright test --headed"
+    npx playwright test --headed
   displayName: 'Run Playwright tests'
