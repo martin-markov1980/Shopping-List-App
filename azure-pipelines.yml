@@ -17,11 +17,11 @@ steps:
 - checkout: self
   displayName: 'Checkout code from GitHub'
 
-# Step 2: Install Node.js (Required for Playwright)
+# Step 2: Install Node.js (Use version 18.x, required for Playwright)
 - task: UseNode@1
   inputs:
-    versionSpec: '16.x'  # Specify the version of Node.js. Adjust as needed.
-  displayName: 'Install Node.js'
+    versionSpec: '18.x'  # Ensure Node.js 18.x is installed
+  displayName: 'Install Node.js 18.x'
 
 # Step 3: Install npm dependencies
 - script: |
@@ -36,6 +36,5 @@ steps:
 
 # Step 5: Run Playwright tests
 - script: |
-    npm install playwright
     npx playwright test --headed
   displayName: 'Run Playwright tests'
