@@ -13,7 +13,6 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-# Step 1: Checkout the code from GitHub
 - checkout: self
   displayName: 'Checkout code from GitHub'
 
@@ -24,29 +23,33 @@ steps:
     checkLatest: true    # Always ensure the latest available version is used
   displayName: 'Install Node.js 18.x'
 
-# Step 3: Verify Node.js and npm Versions
+# Step 3: Print Node.js Version
 - script: |
-    echo "Node.js and npm versions"
     node -v
-    npm -v
-  displayName: 'Check Node.js and npm versions'
+  displayName: 'Print Node.js Version'
 
-# Step 4: Clear npm cache
+# Step 4: Print npm and npx Versions
+- script: |
+    npm -v
+    npx -v
+  displayName: 'Print npm and npx Versions'
+
+# Step 5: Clear npm cache
 - script: |
     npm cache clean --force
   displayName: 'Clear npm cache'
 
-# Step 5: Install npm dependencies including Playwright
+# Step 6: Install npm dependencies including Playwright
 - script: |
     npm install
   displayName: 'Install npm dependencies'
 
-# Step 6: Verify Playwright Installation
+# Step 7: Check Playwright Installation with sh
 - script: |
-    npx playwright --version
-  displayName: 'Check Playwright installation'
+    sh -c "npx playwright --version"
+  displayName: 'Check Playwright Installation with sh'
 
-# Step 7: Run Playwright Tests
+# Step 8: Run Playwright Tests
 - script: |
     npx playwright test --headed
   displayName: 'Run Playwright tests'
