@@ -13,7 +13,6 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-# Step 1: Checkout the code from GitHub
 - checkout: self
   displayName: 'Checkout code from GitHub'
 
@@ -23,23 +22,19 @@ steps:
     versionSpec: '18.x'  # Ensure Node.js 18.x is installed
   displayName: 'Install Node.js 18.x'
 
-# Step 3: Install npm dependencies
-- script: |
-    npm install
-  displayName: 'Install npm dependencies'
-
-# Step 4: Install system dependencies for Playwright
-- script: |
-    sudo apt-get update
-    sudo apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libx11-xcb1 libdrm2 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libasound2 libpangocairo-1.0-0 libxshmfence1 libxss1 libgtk-3-0 libx11-xcb-dev
-  displayName: 'Install system dependencies for Playwright'
-
-# Step 5: Install npm dependencies including Playwright
+# Step 3: Install npm dependencies including Playwright
 - script: |
     npm install playwright
   displayName: 'Install Playwright and npm dependencies'
 
- # Step 6: Run Playwright tests
+# Step 4: Check Node.js and Playwright versions (Debugging)
+- script: |
+    node -v
+    npm -v
+    npx playwright --version
+  displayName: 'Check Node.js and Playwright versions'
+
+# Step 5: Run Playwright tests (Headed mode)
 - script: |
     /bin/bash -c "npx playwright test --headed"
-  displayName: 'Run Playwright tests' 
+  displayName: 'Run Playwright tests'
