@@ -19,6 +19,9 @@ test('has added todo', async ({ page }) => {
   // Fill the input field by its selector
   await page.fill('#task-quantity', '3');
 
+  // Click the button by its ID
+  await page.click('#add-task-btn-modal');
+
   const tableLocator = page.locator('table');
   await expect(tableLocator).toHaveText(/Apple/);
 
