@@ -76,8 +76,8 @@ function deleteAllTasks() {
     tableBody.innerHTML = '';
 }
 
-// Search Item functionality for both on typing and using the serach button
-search.addEventListener('keyup', searchItem);
+// Search Item functionality for both on typing and using the search button
+search.addEventListener('input', searchItem);
 
 function searchItem(e) {
     let itemNames = document.querySelectorAll('tbody tr');
