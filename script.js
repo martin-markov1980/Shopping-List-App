@@ -20,7 +20,7 @@ addTaskBtn.addEventListener('click', () => {
 })
 
 // Checking if task name and quantity have values, and enabling the Add Task Button if they DO.
-addItemModal.addEventListener('keyup', () => {
+addItemModal.addEventListener('input', () => {
     if (taskName.value.trim() !== '' && quantity.value.trim() !== '') {
         let att = addTaskBtnModal.getAttributeNode('disabled');
         if (att) {
