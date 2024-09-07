@@ -1,7 +1,11 @@
 import { test, expect } from '@playwright/test';
 
-test('Add Shopping List Item with valid inputs', async ({ page }) => {
-  await page.goto('http://127.0.0.1:5500/');
+test('Add Shopping List Item with valid inputs', async ({ page, baseURL }) => {
+  if (baseURL === "http://127.0.0.1:5500/") {
+    await page.goto('http://127.0.0.1:5500/');
+  } else {
+    await page.goto('https://martin-markov1980.github.io/Shopping-List-App/');
+  }
 
   // Click add task button
   await page.click('#add-task');
@@ -24,8 +28,12 @@ test('Add Shopping List Item with valid inputs', async ({ page }) => {
   await expect(tableLocator).toHaveText(/Apple/);
 });
 
-test('Add Shopping List Item with invalid inputs', async ({ page }) => {
-  await page.goto('http://127.0.0.1:5500/');
+test('Add Shopping List Item with invalid inputs', async ({ page, baseURL }) => {
+  if (baseURL === "http://127.0.0.1:5500/") {
+    await page.goto('http://127.0.0.1:5500/');
+  } else {
+    await page.goto('https://martin-markov1980.github.io/Shopping-List-App/');
+  }
 
   // Click add task button
   await page.click('#add-task');
@@ -48,8 +56,12 @@ test('Add Shopping List Item with invalid inputs', async ({ page }) => {
   await expect(tableRows).toHaveCount(0);
 });
 
-test('Delete Single Shopping Item', async ({ page }) => {
-  await page.goto('http://127.0.0.1:5500/');
+test('Delete Single Shopping Item', async ({ page, baseURL }) => {
+  if (baseURL === "http://127.0.0.1:5500/") {
+    await page.goto('http://127.0.0.1:5500/');
+  } else {
+    await page.goto('https://martin-markov1980.github.io/Shopping-List-App/');
+  }
 
   // Click add task button
   await page.click('#add-task');
@@ -102,8 +114,12 @@ test('Delete Single Shopping Item', async ({ page }) => {
 
 });
 
-test('Delete All Shopping Items', async ({ page }) => {
-  await page.goto('http://127.0.0.1:5500/');
+test('Delete All Shopping Items', async ({ page, baseURL }) => {
+  if (baseURL === "http://127.0.0.1:5500/") {
+    await page.goto('http://127.0.0.1:5500/');
+  } else {
+    await page.goto('https://martin-markov1980.github.io/Shopping-List-App/');
+  }
 
   // Click add task button
   await page.click('#add-task');
@@ -156,8 +172,12 @@ test('Delete All Shopping Items', async ({ page }) => {
 
 });
 
-test('Filter Shopping Items', async ({ page }) => {
-  await page.goto('http://127.0.0.1:5500/');
+test('Filter Shopping Items', async ({ page, baseURL }) => {
+  if (baseURL === "http://127.0.0.1:5500/") {
+    await page.goto('http://127.0.0.1:5500/');
+  } else {
+    await page.goto('https://martin-markov1980.github.io/Shopping-List-App/');
+  }
 
   // Click add task button
   await page.click('#add-task');
