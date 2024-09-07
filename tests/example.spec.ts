@@ -10,10 +10,13 @@ test('has added todo', async ({ page }) => {
   await page.waitForSelector('#add-item-modal', { state: 'visible' });
 
   // Fill the input field by its selector
-  await page.fill('#task-name', 'Apple');
+  // await page.fill('#task-name', 'Apple');
+  // Example: Fill an input field inside the modal
+  await page.fill('#add-item-modal input#task-name', 'Apple');
 
   // Fill the input field by its selector
-  await page.fill('#task-quantity', '3');
+  // await page.fill('#task-quantity', '3');
+  await page.fill('#add-item-modal input#task-quantity', '3');
 
   // Click the button by its ID
   // await page.click('#add-task-btn-modal');
