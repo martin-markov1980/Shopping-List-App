@@ -28,3 +28,4 @@ steps:
   displayName: 'Run Playwright tests'
   env:
     CI: 'true'
+    BASE_URL: 'https://martin-markov1980.github.io/Shopping-List-App/'
