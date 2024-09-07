@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('has added todo', async ({ page }) => {
-  await page.goto('https://martin-markov1980.github.io/Shopping-List-App/');
+  await page.goto('http://127.0.0.1:5500/');
 
   // Click the button by its ID
   await page.click('#add-task');
@@ -12,14 +12,16 @@ test('has added todo', async ({ page }) => {
   // Fill the input field by its selector
   // await page.fill('#task-name', 'Apple');
   // Example: Fill an input field inside the modal
-  await page.fill('#add-item-modal input#task-name', 'Apple');
+  
+  await page.fill('#add-item-modal input#task-name', 'Appleeee');
 
   // Fill the input field by its selector
   // await page.fill('#task-quantity', '3');
   await page.fill('#add-item-modal input#task-quantity', '3');
 
-  // Click the button by its ID
-  // await page.click('#add-task-btn-modal');
+  await page.keyboard.press('Tab');
+  await page.fill('#add-item-modal input#task-name', 'Apple');
+
   await page.click('#add-item-modal button#add-task-btn-modal');
 
   const tableLocator = page.locator('table');
