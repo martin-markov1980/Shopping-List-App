@@ -12,8 +12,6 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
-  env:
-    ENVIRONMENT: 'production'
 
 - checkout: self
   displayName: 'Checkout code from GitHub'
@@ -28,3 +26,5 @@ steps:
   displayName: 'Install Playwright browsers'
 - script: npx playwright test
   displayName: 'Run Playwright tests'
+  env:
+    CI: 'true'

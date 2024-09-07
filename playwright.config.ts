@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+require('dotenv').config();
 
 /**
  * Read environment variables from file.
@@ -25,7 +26,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: process.env.ENVIRONMENT === 'production' ? 'https://martin-markov1980.github.io/Shopping-List-App/' : 'http://127.0.0.1:5500/',
+    baseURL: process.env.BASE_URL || 'https://martin-markov1980.github.io/Shopping-List-App/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
