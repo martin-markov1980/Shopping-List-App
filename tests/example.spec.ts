@@ -225,6 +225,4 @@ test('Filter Shopping Items', async ({ page, baseURL }) => {
   // Check if the content of the visible row match the expected filter value
   const firstCell = visibleRows.first().locator('td:first-child');
   await expect(firstCell).toHaveText('Orange');
-  console.log(baseURL);
-  
 });
