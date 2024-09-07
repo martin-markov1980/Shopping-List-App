@@ -28,5 +28,3 @@ steps:
   env:
     ENVIRONMENT: 'production'
   displayName: 'Run Playwright tests'
-  env:
-    CI: 'true'
