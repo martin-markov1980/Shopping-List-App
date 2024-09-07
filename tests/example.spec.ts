@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('has added todo', async ({ page }) => {
-  await page.goto('http://127.0.0.1:5500/');
+  await page.goto('https://martin-markov1980.github.io/Shopping-List-App/');
 
   // Click the button by its ID
   await page.click('#add-task');
