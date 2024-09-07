@@ -25,6 +25,8 @@ steps:
 - script: npx playwright install --with-deps
   displayName: 'Install Playwright browsers'
 - script: npx playwright test
+  env:
+    ENVIRONMENT: 'production'
   displayName: 'Run Playwright tests'
   env:
     CI: 'true'

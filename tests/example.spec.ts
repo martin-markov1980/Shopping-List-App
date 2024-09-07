@@ -1,12 +1,8 @@
 import { test, expect } from '@playwright/test';
 
 test('Add Shopping List Item with valid inputs', async ({ page, baseURL }) => {
-  if (baseURL === "http://127.0.0.1:5500/") {
-    await page.goto('http://127.0.0.1:5500/');
-  } else {
-    await page.goto('https://martin-markov1980.github.io/Shopping-List-App/');
-  }
-
+  await page.goto(baseURL = 'http://127.0.0.1:5500/');
+  
   // Click add task button
   await page.click('#add-task');
 
@@ -29,11 +25,7 @@ test('Add Shopping List Item with valid inputs', async ({ page, baseURL }) => {
 });
 
 test('Add Shopping List Item with invalid inputs', async ({ page, baseURL }) => {
-  if (baseURL === "http://127.0.0.1:5500/") {
-    await page.goto('http://127.0.0.1:5500/');
-  } else {
-    await page.goto('https://martin-markov1980.github.io/Shopping-List-App/');
-  }
+  await page.goto(baseURL = 'http://127.0.0.1:5500/');
 
   // Click add task button
   await page.click('#add-task');
@@ -57,11 +49,7 @@ test('Add Shopping List Item with invalid inputs', async ({ page, baseURL }) => 
 });
 
 test('Delete Single Shopping Item', async ({ page, baseURL }) => {
-  if (baseURL === "http://127.0.0.1:5500/") {
-    await page.goto('http://127.0.0.1:5500/');
-  } else {
-    await page.goto('https://martin-markov1980.github.io/Shopping-List-App/');
-  }
+  await page.goto(baseURL = 'http://127.0.0.1:5500/');
 
   // Click add task button
   await page.click('#add-task');
@@ -115,11 +103,7 @@ test('Delete Single Shopping Item', async ({ page, baseURL }) => {
 });
 
 test('Delete All Shopping Items', async ({ page, baseURL }) => {
-  if (baseURL === "http://127.0.0.1:5500/") {
-    await page.goto('http://127.0.0.1:5500/');
-  } else {
-    await page.goto('https://martin-markov1980.github.io/Shopping-List-App/');
-  }
+  await page.goto(baseURL = 'http://127.0.0.1:5500/');
 
   // Click add task button
   await page.click('#add-task');
@@ -173,11 +157,7 @@ test('Delete All Shopping Items', async ({ page, baseURL }) => {
 });
 
 test('Filter Shopping Items', async ({ page, baseURL }) => {
-  if (baseURL === "http://127.0.0.1:5500/") {
-    await page.goto('http://127.0.0.1:5500/');
-  } else {
-    await page.goto('https://martin-markov1980.github.io/Shopping-List-App/');
-  }
+  await page.goto(baseURL = 'http://127.0.0.1:5500/');
 
   // Click add task button
   await page.click('#add-task');
@@ -245,4 +225,6 @@ test('Filter Shopping Items', async ({ page, baseURL }) => {
   // Check if the content of the visible row match the expected filter value
   const firstCell = visibleRows.first().locator('td:first-child');
   await expect(firstCell).toHaveText('Orange');
+  console.log(baseURL);
+  
 });
