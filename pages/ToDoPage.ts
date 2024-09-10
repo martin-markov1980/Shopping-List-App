@@ -55,10 +55,10 @@ export class ToDoPage {
   }
 
   async deleteSingleTask(tasksName: string): Promise<void> {
-    const tdName = this.page.locator('td', { hasText: tasksName });
-    const tdButton = tdName.locator('~ td:nth-of-type(3)');
-    const deleteButton = tdButton.locator(':first-child');
-    await deleteButton.click();
+    const textToFind = tasksName;
+    const row = this.page.locator(`tr:has(td:has-text("${textToFind}"))`);
+    const button = row.locator('td >> button');
+    await button.click();
     await expect(this.deleteSingleTaskModal).toBeVisible();
     await this.confirmDeleteSingleTaskBtn.click();
   }
