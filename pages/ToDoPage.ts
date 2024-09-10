@@ -59,6 +59,7 @@ export class ToDoPage {
     const row = this.page.locator(`tr:has(td:has-text("${textToFind}"))`);
     const button = row.locator('td >> button');
     await button.click();
+    await expect(button).toBeVisible();
     await expect(this.deleteSingleTaskModal).toBeVisible();
     await this.confirmDeleteSingleTaskBtn.click();
   }
